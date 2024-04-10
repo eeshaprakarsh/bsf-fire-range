@@ -1,23 +1,25 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { Card } from "antd";
+import Menu from "./components/Menu";
 
 function App() {
+  const gridStyle = {
+    width: "46%",
+    margin: "2% 2%",
+    textAlign: "center",
+    backgroundColor: "#1777ff",
+    color: "white",
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          BSF Fire Range
-        </a>
-      </header>
+    <div className="app">
+      <Card title="BSF Firing Assesment" className="cardStyle">
+        <Card.Grid style={gridStyle}>Update Candidate Details</Card.Grid>
+        <Card.Grid style={gridStyle}>View/Edit Candidate Details</Card.Grid>
+        <Card.Grid style={gridStyle}>Record report</Card.Grid>
+        <Card.Grid style={gridStyle}>View Report</Card.Grid>
+      </Card>
+      <Menu />
+      {/* <Typography.Title level={1}>BSF Fire Range</Typography.Title> */}
     </div>
   );
 }
