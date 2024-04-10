@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bsf-fire-range/static/css/main.d4d605c1.css",
+    "main.js": "/bsf-fire-range/static/js/main.b50f9855.js",
+    "static/js/453.d4a5fb6d.chunk.js": "/bsf-fire-range/static/js/453.d4a5fb6d.chunk.js",
+    "index.html": "/bsf-fire-range/index.html",
+    "main.d4d605c1.css.map": "/bsf-fire-range/static/css/main.d4d605c1.css.map",
+    "main.b50f9855.js.map": "/bsf-fire-range/static/js/main.b50f9855.js.map",
+    "453.d4a5fb6d.chunk.js.map": "/bsf-fire-range/static/js/453.d4a5fb6d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d4d605c1.css",
+    "static/js/main.b50f9855.js"
+  ]
+}
