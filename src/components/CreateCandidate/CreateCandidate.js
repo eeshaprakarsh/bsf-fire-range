@@ -6,7 +6,7 @@ const CreateCandidate = () => {
     traineeName: "",
     traineeGrp: "",
     traineeID: "",
-    dateAdded: "",
+    dateAdded: Date.now(),
   });
 
   const handleChange = (e) => {
