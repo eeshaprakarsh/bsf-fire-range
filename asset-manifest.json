@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bsf-fire-range/static/css/main.6f4870c6.css",
-    "main.js": "/bsf-fire-range/static/js/main.5fac0b35.js",
-    "static/js/453.d4a5fb6d.chunk.js": "/bsf-fire-range/static/js/453.d4a5fb6d.chunk.js",
-    "index.html": "/bsf-fire-range/index.html",
-    "main.6f4870c6.css.map": "/bsf-fire-range/static/css/main.6f4870c6.css.map",
-    "main.5fac0b35.js.map": "/bsf-fire-range/static/js/main.5fac0b35.js.map",
-    "453.d4a5fb6d.chunk.js.map": "/bsf-fire-range/static/js/453.d4a5fb6d.chunk.js.map"
+    "main.css": "/static/css/main.6f4870c6.css",
+    "main.js": "/static/js/main.3467ffde.js",
+    "static/js/453.d4a5fb6d.chunk.js": "/static/js/453.d4a5fb6d.chunk.js",
+    "index.html": "/index.html",
+    "main.6f4870c6.css.map": "/static/css/main.6f4870c6.css.map",
+    "main.3467ffde.js.map": "/static/js/main.3467ffde.js.map",
+    "453.d4a5fb6d.chunk.js.map": "/static/js/453.d4a5fb6d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6f4870c6.css",
-    "static/js/main.5fac0b35.js"
+    "static/js/main.3467ffde.js"
   ]
 }
