@@ -52,7 +52,7 @@ const CreateCandidate = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="traineeID">Email Address</label>
+          <label htmlFor="traineeID">Trainee ID</label>
           <input
             type="text"
             id="traineeID"

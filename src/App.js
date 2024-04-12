@@ -13,6 +13,7 @@ function App() {
         <div className="navLeft">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/0/00/BSF_Logo.svg"
+            alt="BSF Logo"
             className="bsfLogo"
           />
           <h2>BSF Firing Assesment</h2>
@@ -20,7 +21,11 @@ function App() {
 
         <div className="navRight">
           <li>
-            <NavLink to="/" activeClassName="active" className="links">
+            <NavLink
+              to="/bsf-fire-range"
+              activeClassName="active"
+              className="links"
+            >
               Add Candidate
             </NavLink>
           </li>
@@ -54,7 +59,7 @@ function App() {
         </div>
       </div>
       <Routes>
-        <Route path="/" element={<CreateComponent />} />
+        <Route path="/bsf-fire-range" element={<CreateComponent />} />
         <Route path="/viewEditDetails" element={<ViewEditDetails />} />
         <Route path="/recordReport" element={<RecordReport />} />
         <Route path="/viewReport" element={<ViewReport />} />
