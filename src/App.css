@@ -10,8 +10,11 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   background: linear-gradient(to right, #ff0000, #0000ff);
   color: white;
-  padding: 0.9% 2%;
-  justify-content: left;
+  padding: 0.5% 0;
+  justify-content: center;
+}
+.header h2 {
+  padding-right: 1%;
 }
 .navRight {
   display: flex;
@@ -42,36 +45,21 @@ li {
 
 .bsfLogo {
   height: 45px;
-  width: 65px;
+  padding-right: 9px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  /* CSS for screens between 768px and 1024px (tablets) 
-   Add your CSS rules for screens between 768px and 1024px here */
-  .header {
-    padding: 0.5% 5%;
-  }
+  /* CSS for screens between 768px and 1024px (tablets) */
+
   .bsfLogo {
     height: 50px;
-    width: 70px;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  /* CSS for laptop screens 
-   Add your CSS rules for screens larger than or equal to 1024px here */
-  .header {
-    padding: 0.5% 7%;
-  }
+  /* CSS for laptop screens  */
+
   .bsfLogo {
     height: 55px;
-    width: 80px;
-  }
-}
-
-@media (max-width: 320px) {
-  /* CSS rules for screens smaller than 320px */
-  .header {
-    padding: 0;
   }
 }
