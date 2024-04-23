@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bsf-fire-range/static/css/main.e4c7db4d.css",
-    "main.js": "/bsf-fire-range/static/js/main.cdc424e2.js",
+    "main.css": "/bsf-fire-range/static/css/main.1a4bffec.css",
+    "main.js": "/bsf-fire-range/static/js/main.b76f1f8a.js",
     "static/js/453.d4a5fb6d.chunk.js": "/bsf-fire-range/static/js/453.d4a5fb6d.chunk.js",
     "index.html": "/bsf-fire-range/index.html",
-    "main.e4c7db4d.css.map": "/bsf-fire-range/static/css/main.e4c7db4d.css.map",
-    "main.cdc424e2.js.map": "/bsf-fire-range/static/js/main.cdc424e2.js.map",
+    "main.1a4bffec.css.map": "/bsf-fire-range/static/css/main.1a4bffec.css.map",
+    "main.b76f1f8a.js.map": "/bsf-fire-range/static/js/main.b76f1f8a.js.map",
     "453.d4a5fb6d.chunk.js.map": "/bsf-fire-range/static/js/453.d4a5fb6d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4c7db4d.css",
-    "static/js/main.cdc424e2.js"
+    "static/css/main.1a4bffec.css",
+    "static/js/main.b76f1f8a.js"
   ]
 }
