@@ -1,0 +1,44 @@
+.cardContainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 7%;
+}
+.card {
+  width: 9rem;
+  height: 10rem;
+  margin: 2%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.card p {
+  font-size: x-small;
+  margin-bottom: 26%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+  /* CSS for screens between 768px and 1024px (tablets) 
+   Add your CSS rules for screens between 768px and 1024px here */
+  .card {
+    width: 17rem;
+  }
+  .card p {
+    margin-bottom: 18%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  /* CSS for laptop screens 
+   Add your CSS rules for screens larger than or equal to 1024px here */
+  .card {
+    width: 12rem;
+  }
+}
+
+@media (max-width: 320px) {
+  /* CSS rules for screens smaller than 320px */
+}

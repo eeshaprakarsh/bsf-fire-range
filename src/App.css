@@ -1,12 +1,17 @@
-.navContainer {
-  display: block;
-  margin: 3% 0;
-
-  padding: 20px;
+.mainContainer {
+  width: 100%;
 }
-.navLeft {
+.headerAndNav {
+  display: block;
+}
+.header {
   display: flex;
   align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to right, #ff0000, #0000ff);
+  color: white;
+  padding: 0.9% 2%;
+  justify-content: left;
 }
 .navRight {
   display: flex;
@@ -30,33 +35,43 @@ li {
 }
 
 .active {
-  color: white;
-  background-color: #007bff;
+  color: #6a09a4;
+  background-color: #fff;
   border-radius: 5px;
-  margin-left: 0.9%;
 }
 
 .bsfLogo {
   height: 45px;
-  width: 70px;
+  width: 65px;
 }
 
-@media screen and (min-width: 660px) {
-  .navContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 2%;
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* CSS for screens between 768px and 1024px (tablets) 
+   Add your CSS rules for screens between 768px and 1024px here */
+  .header {
+    padding: 0.5% 5%;
   }
-  .navRight {
-    display: inline-block;
-    width: 44%;
-    padding: initial;
-    margin: initial;
+  .bsfLogo {
+    height: 50px;
+    width: 70px;
   }
-  .active {
-    margin-left: 0;
+}
+
+@media only screen and (min-width: 1024px) {
+  /* CSS for laptop screens 
+   Add your CSS rules for screens larger than or equal to 1024px here */
+  .header {
+    padding: 0.5% 7%;
+  }
+  .bsfLogo {
+    height: 55px;
+    width: 80px;
+  }
+}
+
+@media (max-width: 320px) {
+  /* CSS rules for screens smaller than 320px */
+  .header {
+    padding: 0;
   }
 }
