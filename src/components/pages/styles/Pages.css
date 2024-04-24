@@ -22,6 +22,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="date"],
+input[type="file"],
 select,
 option {
   width: -webkit-fill-available;
@@ -43,6 +44,7 @@ button:hover {
   background-color: #0056b3;
 }
 
+/* For smaller screens such as smartphones in portrait orientation and smaller tablets */
 @media (max-width: 768px) {
   .form-container {
     width: 80%;
@@ -51,7 +53,6 @@ button:hover {
 
 /* For tablets and greater */
 @media only screen and (min-width: 768px) {
-  /* Your CSS rules for tablets and greater screens go here */
   .formWrapper {
     padding-top: 7%;
   }

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./RecordReport.css";
-import NavBar from "../NavBar/NavBar";
+import "./styles/Pages.css";
+import NavBar from "../layout/Nav/NavBar";
 function RecordReport() {
   const [formData, setFormData] = useState({
     traineeName: [],

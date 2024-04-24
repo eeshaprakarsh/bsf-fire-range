@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
-import "./Home.css"; // Optional: Custom CSS for additional styling
+import "./styles/Home.css"; // Optional: Custom CSS for additional styling
 import { NavLink } from "react-router-dom";
 
 import {
@@ -18,7 +18,7 @@ const Home = () => {
           <div className="card-body">
             <h6 className="card-title">Add Candidate</h6>
 
-            <p className="card-text">Some quick example text.</p>
+            <p className="card-text">Enter the details to add a candidate.</p>
             <UserAddOutlined />
           </div>
         </div>
@@ -28,7 +28,9 @@ const Home = () => {
           <div className="card-body">
             <h6 className="card-title">View/Edit Details</h6>
 
-            <p className="card-text">Some quick example text.</p>
+            <p className="card-text">
+              Access and manage candidate information.
+            </p>
             <FolderViewOutlined />
           </div>
         </div>
@@ -38,7 +40,7 @@ const Home = () => {
           <div className="card-body">
             <h6 className="card-title">Record Report</h6>
 
-            <p className="card-text">Some quick example text.</p>
+            <p className="card-text">Enter details of shooting.</p>
             <EditOutlined />
           </div>
         </div>
@@ -47,7 +49,7 @@ const Home = () => {
         <div className="card">
           <div className="card-body">
             <h6 className="card-title">View Report</h6>
-            <p className="card-text">Some quick example text.</p>
+            <p className="card-text">Insights on shooting.</p>
             <FundViewOutlined />
           </div>
         </div>

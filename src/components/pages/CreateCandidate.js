@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./CreateCandidate.css"; // Import your custom CSS file for styling
-import NavBar from "../NavBar/NavBar";
+import "./styles/Pages.css"; // Import your custom CSS file for styling
+import NavBar from "../layout/Nav/NavBar";
+// import GeneralForm from "../../forms/GeneralForm/GeneralForm";
 
 const CreateCandidate = () => {
   const [formData, setFormData] = useState({
@@ -23,7 +24,6 @@ const CreateCandidate = () => {
     // Handle form submission, e.g., send data to server
     console.log(formData);
   };
-
   return (
     <div>
       <NavBar />
@@ -74,6 +74,17 @@ const CreateCandidate = () => {
                 id="dateAdded"
                 name="dateAdded"
                 value={formData.dateAdded}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="dateAdded">Image</label>
+              <input
+                type="file"
+                id="img"
+                name="img"
+                // value={formData.img}
                 onChange={handleChange}
                 required
               />

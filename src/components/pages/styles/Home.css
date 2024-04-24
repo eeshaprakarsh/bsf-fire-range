@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding: 7%;
+  padding: 14% 4%;
 }
 .card {
   width: 9rem;
@@ -20,9 +20,11 @@
   flex-direction: column;
 }
 
+/* CSS for screens between 768px and 1024px (tablets) */
 @media only screen and (min-width: 700px) and (max-width: 1024px) {
-  /* CSS for screens between 768px and 1024px (tablets) 
-   Add your CSS rules for screens between 768px and 1024px here */
+  .cardContainer {
+    padding: 7%;
+  }
   .card {
     width: 17rem;
   }
@@ -31,14 +33,12 @@
   }
 }
 
+/* CSS for laptop screens larger than or equal to 1024px here */
 @media only screen and (min-width: 1024px) {
-  /* CSS for laptop screens 
-   Add your CSS rules for screens larger than or equal to 1024px here */
+  .cardContainer {
+    padding: 7%;
+  }
   .card {
     width: 12rem;
   }
-}
-
-@media (max-width: 320px) {
-  /* CSS rules for screens smaller than 320px */
 }

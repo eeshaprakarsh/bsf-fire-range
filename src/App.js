@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
 
-import Home from "./components/Home/Home";
-import CreateCandidate from "./components/CreateCandidate/CreateCandidate";
-import ViewEditDetails from "./components/ViewEditDetails/ViewEditDetails";
-import RecordReport from "./components/RecordReport/RecordReport";
-import ViewReport from "./components/ViewReport/ViewReport";
+import Home from "./components/pages/Home";
+import CreateCandidate from "./components/pages/CreateCandidate";
+import ViewEditDetails from "./components/pages/ViewEditDetails";
+import RecordReport from "./components/pages/RecordReport";
+import ViewReport from "./components/pages/ViewReport";
 function App() {
-  const [showNav, setShowNav] = useState(false);
   return (
     <div className="mainContainer">
       <div className="header">
