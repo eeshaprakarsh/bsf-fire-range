@@ -1,14 +1,32 @@
 .cardContainer {
   display: flex;
   justify-content: space-evenly;
+  align-content: baseline;
   flex-wrap: wrap;
   padding: 14% 4%;
+  height: 100vh;
+  background-color: antiquewhite;
+  color: white;
+}
+.bgRed {
+  background-color: #fe0109;
+}
+.bgLightRed {
+  background-color: #b80960;
+}
+.bgLightBlue {
+  background-color: #670aa8;
+}
+.bgBlue {
+  background-color: #0500fa;
 }
 .card {
   width: 9rem;
   height: 10rem;
   margin: 2%;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-weight: bold;
 }
 .card p {
   font-size: x-small;

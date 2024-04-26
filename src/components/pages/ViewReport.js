@@ -30,7 +30,7 @@ function ViewReport() {
   return (
     <div>
       <NavBar />
-      <div className="formWrapper">
+      <div className="formWrapper viewReport">
         <p className="form-container ">
           Firing Graphs and detailed Insights will be shown here
         </p>

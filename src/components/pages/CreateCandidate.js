@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/Pages.css"; // Import your custom CSS file for styling
 import NavBar from "../layout/Nav/NavBar";
 // import GeneralForm from "../../forms/GeneralForm/GeneralForm";
+import api from "../../utils/api";
 
 const CreateCandidate = () => {
   const [formData, setFormData] = useState({
     traineeName: "",
     traineeGrp: "",
     traineeID: "",
-    dateAdded: Date.now(),
+    dateAdded: "",
   });
+
+  useEffect(() => {
+    api.fetchCandidate().then((res) => console.log(res));
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

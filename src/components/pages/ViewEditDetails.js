@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles/Pages.css";
 import NavBar from "../layout/Nav/NavBar";
+import api from "../../utils/api";
+
 function ViewEditDetails() {
   const [formData, setFormData] = useState({
     traineeName: [],
@@ -8,6 +10,10 @@ function ViewEditDetails() {
     targetNo: "",
     dateAdded: "",
   });
+
+  useEffect(() => {
+    api.addCandidate(formData).then((res) => console.log(res));
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

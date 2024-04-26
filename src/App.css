@@ -48,17 +48,15 @@ li {
   padding-right: 9px;
 }
 
+/* CSS for screens between 768px and 1024px (tablets) */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  /* CSS for screens between 768px and 1024px (tablets) */
-
   .bsfLogo {
     height: 50px;
   }
 }
 
+/* CSS for laptop screens and greater  */
 @media only screen and (min-width: 1024px) {
-  /* CSS for laptop screens  */
-
   .bsfLogo {
     height: 55px;
   }
