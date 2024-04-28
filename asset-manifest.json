@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/bsf-fire-range/static/css/main.896de081.css",
-    "main.js": "/bsf-fire-range/static/js/main.2a14a624.js",
+    "main.css": "/bsf-fire-range/static/css/main.6958a867.css",
+    "main.js": "/bsf-fire-range/static/js/main.fd693568.js",
     "static/js/453.d4a5fb6d.chunk.js": "/bsf-fire-range/static/js/453.d4a5fb6d.chunk.js",
-    "static/media/login.png": "/bsf-fire-range/static/media/login.dd2d6c309f3bd88b4cb8.png",
+    "static/media/flag.png": "/bsf-fire-range/static/media/flag.6f7cad389a912aa3f455.png",
+    "static/media/banner.png": "/bsf-fire-range/static/media/banner.0237198d3e0fd7d2d012.png",
     "index.html": "/bsf-fire-range/index.html",
-    "main.896de081.css.map": "/bsf-fire-range/static/css/main.896de081.css.map",
-    "main.2a14a624.js.map": "/bsf-fire-range/static/js/main.2a14a624.js.map",
+    "main.6958a867.css.map": "/bsf-fire-range/static/css/main.6958a867.css.map",
+    "main.fd693568.js.map": "/bsf-fire-range/static/js/main.fd693568.js.map",
     "453.d4a5fb6d.chunk.js.map": "/bsf-fire-range/static/js/453.d4a5fb6d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.896de081.css",
-    "static/js/main.2a14a624.js"
+    "static/css/main.6958a867.css",
+    "static/js/main.fd693568.js"
   ]
 }
