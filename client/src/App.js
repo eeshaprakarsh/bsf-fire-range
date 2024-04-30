@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Routes, Route, NavLink } from "react-router-dom";
 
+import LoginForm from "./components/forms/LoginForm/LoginForm";
 import Home from "./components/pages/Home";
 import CreateCandidate from "./components/pages/CreateCandidate";
 import ViewEditDetails from "./components/pages/ViewEditDetails";
@@ -19,7 +20,8 @@ function App() {
         <h2>BSF Firing Assesment</h2>
       </div>
       <Routes>
-        <Route path="/bsf-fire-range" element={<Home />} />
+        <Route path="/bsf-fire-range" element={<LoginForm />} />
+        <Route path="/bsf-fire-range/homePage" element={<Home />} />
         <Route
           path="/bsf-fire-range/createCandidate"
           element={<CreateCandidate />}

@@ -1,0 +1,120 @@
+.login-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.top-section {
+  display: flex;
+  justify-content: space-evenly;
+}
+.login-form {
+  font-size: 13px;
+  position: absolute;
+  z-index: 1;
+  top: 19%;
+  left: 5%;
+  width: 200px;
+  overflow: hidden;
+}
+.details {
+  padding: 16% 0 0 9%;
+}
+
+.login-input {
+  width: 90%;
+  height: 20px;
+  border: #1777ff70 1px solid;
+  border-radius: 4px;
+}
+
+.login-label {
+  margin-top: 6px;
+  margin-bottom: 2px !important;
+  color: #000000a8;
+}
+
+.buttons {
+  padding-top: 3%;
+}
+
+.signup-button,
+.login-button {
+  padding: 3px 10px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 90%;
+}
+
+.signup-button a,
+.login-button a {
+  text-decoration: none;
+}
+
+.login-button {
+  margin: 5% 0 4% 0;
+  border: #1777ff 1px solid;
+}
+
+.login-button a {
+  color: #ffffff;
+}
+
+.buttons > :nth-child(2) {
+  background-color: #ffffff;
+  border: #1777ff70 1px solid;
+}
+.flag-img {
+  margin-top: 5%;
+  overflow: hidden;
+}
+.flag-img img {
+  height: 75vh;
+  float: right;
+  margin-right: -31%;
+}
+
+/* Media query for tablets */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .flag-img {
+    margin-top: 3%;
+  }
+  .flag-img img {
+    height: 90vh;
+    margin-right: -5%;
+  }
+  .login-form {
+    top: 6%;
+    left: 17%;
+  }
+}
+
+/* Media query for landscape mode on tablets and mobile devices */
+@media only screen and (orientation: landscape) /* Landscape orientation */ {
+  .flag-img img {
+    top: 6%;
+    margin-right: 12%;
+  }
+  .login-form {
+    top: 6%;
+    left: 20%;
+  }
+}
+
+/* Media query for laptops and larger screens */
+@media only screen and (min-width: 1024px) {
+  .login-input {
+    height: 30px;
+    /* width: 58%; */
+  }
+  .signup-button,
+  .login-button {
+    padding: 7px 13px !important;
+  }
+  .flag-img img {
+    margin-right: 8%;
+  }
+  .login-form {
+    top: 0%;
+    left: 18%;
+    width: 320px;
+  }
+}
