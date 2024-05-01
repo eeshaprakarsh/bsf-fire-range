@@ -5,7 +5,7 @@
   font-size: small;
   font-weight: bold;
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   color: rgb(23 119 255);
 }
 

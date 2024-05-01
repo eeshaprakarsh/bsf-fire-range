@@ -5,11 +5,14 @@ import api from "../../utils/api";
 
 function ViewEditDetails() {
   const [formData, setFormData] = useState({
-    traineeName: [],
-    traineeGrp: [],
-    targetNo: "",
+    traineeName: "",
+
+    traineeID: "",
     dateAdded: "",
   });
+
+  const [searchTrainee, setSearchTrainee] = useState(true);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   useEffect(() => {
     api.addCandidate(formData).then((res) => console.log(res));
@@ -25,8 +28,17 @@ function ViewEditDetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // Handle form submission, e.g., send data to server
     console.log(formData);
+
+    // Show success message
+    setShowSuccessMessage(true);
+
+    // Set timer to hide the success message after 2 seconds
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+    }, 1000);
   };
 
   return (
@@ -47,19 +59,7 @@ function ViewEditDetails() {
                 required
               />
             </div>
-
-            <div className="form-group">
-              <label htmlFor="traineeGrp">Trainee Group</label>
-              <input
-                type="text"
-                id="traineeGrp"
-                name="traineeGrp"
-                value={formData.traineeGrp}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
+            {searchTrainee && <h6 className="form-group or"> OR </h6>}
             <div className="form-group">
               <label htmlFor="traineeID">Trainee ID</label>
               <input
@@ -71,32 +71,43 @@ function ViewEditDetails() {
                 required
               />
             </div>
-
-            <div className="form-group">
-              <label htmlFor="dateAdded">Date</label>
-              <input
-                type="date"
-                id="dateAdded"
-                name="dateAdded"
-                value={formData.dateAdded}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="dateAdded">Image</label>
-              <input
-                type="file"
-                id="img"
-                name="img"
-                // value={formData.img}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <button type="submit">Submit</button>
+            {searchTrainee && (
+              <button onClick={() => setSearchTrainee(false)}>Search</button>
+            )}
+            {!searchTrainee && (
+              <div>
+                <div className="form-group">
+                  <label htmlFor="dateAdded">Date</label>
+                  <input
+                    type="date"
+                    id="dateAdded"
+                    name="dateAdded"
+                    value={formData.dateAdded}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="dateAdded">Trainee Picture</label>
+                  <input
+                    type="file"
+                    id="img"
+                    name="img"
+                    // value={formData.img}
+                    // onChange={handleChange}
+                    required
+                  />
+                </div>
+                <button type="submit">Submit</button>
+              </div>
+            )}
           </form>
-        </div>{" "}
+          {showSuccessMessage && (
+            <div className="overlay">
+              <p className="success-message">Details Updated Successfully!</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

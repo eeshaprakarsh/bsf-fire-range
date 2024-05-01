@@ -2,10 +2,6 @@
   padding-top: 12%;
   padding-bottom: 17%;
   background-color: antiquewhite;
-}
-
-/* .viewReport class has to be removed once the graphs are added */
-.viewReport {
   height: 100vh;
 }
 
@@ -23,6 +19,10 @@
   margin-bottom: 20px;
 }
 
+.or {
+  text-align: center;
+}
+
 label {
   display: block;
   margin-bottom: 5px;
@@ -32,8 +32,8 @@ input[type="text"],
 input[type="email"],
 input[type="date"],
 input[type="file"],
-select,
-option {
+.select-form,
+.option-form {
   width: -webkit-fill-available;
   padding: 10px;
   border: 1px solid #ccc;
@@ -51,6 +51,37 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+.target-lengths {
+  display: flex;
+  text-align: center;
+}
+
+.target-lengths > .form-group {
+  flex-grow: 1;
+}
+.margin-select {
+  margin: 0 3%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Background color with opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-message {
+  background-color: #ede9e0;
+  color: #212b36;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 /* For smaller screens such as smartphones in portrait orientation and smaller tablets */

@@ -4,7 +4,7 @@
   align-content: baseline;
   flex-wrap: wrap;
   padding: 14% 4%;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: antiquewhite;
   color: white;
 }
@@ -26,7 +26,7 @@
   margin: 2%;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   color: white;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 .card p {
   font-size: x-small;
@@ -36,6 +36,16 @@
 .card-body {
   display: flex;
   flex-direction: column;
+}
+
+.tweet-container {
+  padding: 4% 4% 9% 4%;
+  background: #faead7;
+}
+
+.loading-twitter {
+  background-color: #faead7;
+  height: 40vh;
 }
 
 /* CSS for screens between 768px and 1024px (tablets) */
@@ -49,6 +59,9 @@
   .card p {
     margin-bottom: 18%;
   }
+  .tweet-container {
+    padding: 1% 6% 13% 6%;
+  }
 }
 
 /* CSS for laptop screens larger than or equal to 1024px here */
@@ -58,5 +71,8 @@
   }
   .card {
     width: 12rem;
+  }
+  .tweet-container {
+    padding: 1% 8% 13% 8%;
   }
 }

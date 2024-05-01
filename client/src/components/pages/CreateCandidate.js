@@ -12,6 +12,8 @@ const CreateCandidate = () => {
     dateAdded: "",
   });
 
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
   useEffect(() => {
     api.fetchCandidate().then((res) => console.log(res));
   }, []);
@@ -26,8 +28,17 @@ const CreateCandidate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // Handle form submission, e.g., send data to server
     console.log(formData);
+
+    // Show success message
+    setShowSuccessMessage(true);
+
+    // Set timer to hide the success message after 2 seconds
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+    }, 1000);
   };
   return (
     <div>
@@ -43,18 +54,6 @@ const CreateCandidate = () => {
                 id="traineeName"
                 name="traineeName"
                 value={formData.traineeName}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="traineeGrp">Trainee Group</label>
-              <input
-                type="text"
-                id="traineeGrp"
-                name="traineeGrp"
-                value={formData.traineeGrp}
                 onChange={handleChange}
                 required
               />
@@ -84,7 +83,7 @@ const CreateCandidate = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="dateAdded">Image</label>
+              <label htmlFor="dateAdded">Trainee Picture</label>
               <input
                 type="file"
                 id="img"
@@ -97,7 +96,12 @@ const CreateCandidate = () => {
 
             <button type="submit">Submit</button>
           </form>
-        </div>{" "}
+          {showSuccessMessage && (
+            <div className="overlay">
+              <p className="success-message">Details Updated Successfully!</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
