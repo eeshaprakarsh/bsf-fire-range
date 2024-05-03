@@ -7,16 +7,15 @@ import api from "../../utils/api";
 const CreateCandidate = () => {
   const [formData, setFormData] = useState({
     traineeName: "",
-    traineeGrp: "",
     traineeID: "",
-    dateAdded: "",
+    dateAdded: Date.now(),
+    traineeImg:
+      "https://lh3.googleusercontent.com/pw/AP1GczNgJ1QesqXXROo13nRmKQeNDlq8NfTv2dZNSakg4nAjYHwQENsTWgaw24P-XEQa04DadI2388mUfp9-XApCBwOLSsMZ-_F7pMLc1gNddaDX3_KtqV7wPcWfqY6fjpFYzUOlrwu-kE-tuh4nnJDgcRIIiQ=w806-h1430-s-no-gm?authuser=0",
   });
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  useEffect(() => {
-    api.fetchCandidate().then((res) => console.log(res));
-  }, []);
+  useEffect(() => {}, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +29,7 @@ const CreateCandidate = () => {
     e.preventDefault();
 
     // Handle form submission, e.g., send data to server
-    console.log(formData);
+    api.addTrainee(formData).then((res) => console.log(res));
 
     // Show success message
     setShowSuccessMessage(true);
@@ -55,7 +54,6 @@ const CreateCandidate = () => {
                 name="traineeName"
                 value={formData.traineeName}
                 onChange={handleChange}
-                required
               />
             </div>
 
@@ -67,7 +65,6 @@ const CreateCandidate = () => {
                 name="traineeID"
                 value={formData.traineeID}
                 onChange={handleChange}
-                required
               />
             </div>
 
@@ -79,7 +76,7 @@ const CreateCandidate = () => {
                 name="dateAdded"
                 value={formData.dateAdded}
                 onChange={handleChange}
-                required
+                disabled
               />
             </div>
             <div className="form-group">
@@ -90,7 +87,7 @@ const CreateCandidate = () => {
                 name="img"
                 // value={formData.img}
                 onChange={handleChange}
-                required
+                disabled
               />
             </div>
 

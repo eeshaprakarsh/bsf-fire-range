@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://jsonplaceholder.typicode.com";
-
+const BASE_URL = "http://localhost:4000";
 const api = axios.create({
   baseURL: BASE_URL,
   timeout: 5000,
@@ -12,7 +11,7 @@ const api = axios.create({
 
 export const fetchCandidate = async () => {
   try {
-    let response = await api.get("/users");
+    let response = await api.get("/candidates");
     // console.log(response);
     return response;
   } catch (error) {
@@ -21,9 +20,10 @@ export const fetchCandidate = async () => {
   }
 };
 
-export const addCandidate = async (data) => {
+export const addTrainee = async (data) => {
   try {
-    let candidateAdded = await api.post("/posts", data);
+    let candidateAdded = await api.post("/addTrainee", data);
+    console.log(data);
     return candidateAdded;
   } catch (error) {
     console.log(`Error Fetching ${error}`);
@@ -33,5 +33,5 @@ export const addCandidate = async (data) => {
 
 export default {
   fetchCandidate,
-  addCandidate,
+  addTrainee,
 };

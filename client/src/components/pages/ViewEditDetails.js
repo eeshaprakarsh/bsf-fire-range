@@ -3,20 +3,35 @@ import "./styles/Pages.css";
 import NavBar from "../layout/Nav/NavBar";
 import api from "../../utils/api";
 
+// import { Input, AutoComplete } from "antd";
+// import "antd/dist/antd.css";
+// const { Option } = AutoComplete;
+
 function ViewEditDetails() {
   const [formData, setFormData] = useState({
     traineeName: "",
-
     traineeID: "",
     dateAdded: "",
   });
 
   const [searchTrainee, setSearchTrainee] = useState(true);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    api.addCandidate(formData).then((res) => console.log(res));
+    api.fetchCandidate().then((data) => console.log(data));
   }, []);
+
+  // const handleSearch = async (value) => {
+  //   try {
+  //     // Fetch suggestions from your API
+  //     const response = await fetch(`YOUR_API_URL?q=${value}`);
+  //     const data = await response.json();
+  //     setOptions(data);
+  //   } catch (error) {
+  //     console.error("Error fetching suggestions:", error);
+  //   }
+  // };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,6 +65,17 @@ function ViewEditDetails() {
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="traineeName">Trainee Name</label>
+              {/* <AutoComplete
+                style={{ width: 200 }}
+                onSearch={handleSearch}
+                placeholder="Search for names"
+              >
+                {options.map((option) => (
+                  <Option key={option.id} value={option.name}>
+                    {option.name}
+                  </Option>
+                ))}
+              </AutoComplete> */}
               <input
                 type="text"
                 id="traineeName"

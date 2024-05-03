@@ -9,7 +9,7 @@ function NavBar() {
         Home
       </NavLink>
       <NavLink to="/bsf-fire-range/" className="nav-link">
-        Welcome Ambikesh!{" "}
+        Welcome Ambikesh!
       </NavLink>
     </nav>
   );
