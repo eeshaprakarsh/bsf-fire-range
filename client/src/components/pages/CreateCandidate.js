@@ -9,11 +9,14 @@ const CreateCandidate = () => {
     traineeName: "",
     traineeID: "",
     dateAdded: Date.now(),
-    traineeImg:
-      "https://lh3.googleusercontent.com/pw/AP1GczNgJ1QesqXXROo13nRmKQeNDlq8NfTv2dZNSakg4nAjYHwQENsTWgaw24P-XEQa04DadI2388mUfp9-XApCBwOLSsMZ-_F7pMLc1gNddaDX3_KtqV7wPcWfqY6fjpFYzUOlrwu-kE-tuh4nnJDgcRIIiQ=w806-h1430-s-no-gm?authuser=0",
+    traineeImg: "",
   });
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [imageSrc, setImageSrc] = useState("");
+
+  const demoImgUrl =
+    "https://lh3.googleusercontent.com/pw/AP1GczNgJ1QesqXXROo13nRmKQeNDlq8NfTv2dZNSakg4nAjYHwQENsTWgaw24P-XEQa04DadI2388mUfp9-XApCBwOLSsMZ-_F7pMLc1gNddaDX3_KtqV7wPcWfqY6fjpFYzUOlrwu-kE-tuh4nnJDgcRIIiQ=w806-h1430-s-no-gm?authuser=0";
 
   useEffect(() => {}, []);
 
@@ -23,21 +26,27 @@ const CreateCandidate = () => {
       ...prevState,
       [name]: value,
     }));
+
+    if (name === "traineeImg") {
+      setImageSrc(demoImgUrl);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Handle form submission, e.g., send data to server
-    api.addTrainee(formData).then((res) => console.log(res));
+    // Handle form submission
+    api.addTrainee(formData).then((res) => {
+      if (res.status === 200) {
+        // Show success message
+        setShowSuccessMessage(true);
 
-    // Show success message
-    setShowSuccessMessage(true);
-
-    // Set timer to hide the success message after 2 seconds
-    setTimeout(() => {
-      setShowSuccessMessage(false);
-    }, 1000);
+        // Set timer to hide the success message after 2 seconds
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 1000);
+      }
+    });
   };
   return (
     <div>
@@ -76,18 +85,28 @@ const CreateCandidate = () => {
                 name="dateAdded"
                 value={formData.dateAdded}
                 onChange={handleChange}
-                disabled
               />
             </div>
+
+            {imageSrc && (
+              <div className="form-group">
+                <label>Selected Trainee Image</label>
+                <img
+                  className="selected-trainee-img"
+                  src={imageSrc}
+                  alt="Selected"
+                />
+              </div>
+            )}
+
             <div className="form-group">
-              <label htmlFor="dateAdded">Trainee Picture</label>
+              <label htmlFor="traineeImg">Trainee Picture</label>
               <input
                 type="file"
-                id="img"
-                name="img"
-                // value={formData.img}
+                id="traineeImg"
+                name="traineeImg"
+                value={formData.traineeImg}
                 onChange={handleChange}
-                disabled
               />
             </div>
 

@@ -9,15 +9,34 @@ const api = axios.create({
   },
 });
 
-export const fetchCandidate = async () => {
+// Define your query parameters
+const queryParams = {
+  param1: "value1",
+  param2: "value2",
+};
+
+export const fetchTrainees = async (val) => {
   try {
-    let response = await api.get("/candidates");
-    // console.log(response);
+    // Define your query parameters
+    // const queryParams = {
+    //   param1: val,
+    // };
+    let response = await api.get("/trainees", { params: val });
+    console.log(response);
     return response;
   } catch (error) {
     console.log(`Error Fetching ${error}`);
     throw error;
   }
+
+  // try {
+  // Fetch from API
+  //   const response = await fetch(`YOUR_API_URL?q=${value}`);
+  //   const data = await response.json();
+  //   setOptions(data);
+  // } catch (error) {
+  //   console.error("Error fetching suggestions:", error);
+  // }
 };
 
 export const addTrainee = async (data) => {
@@ -32,6 +51,6 @@ export const addTrainee = async (data) => {
 };
 
 export default {
-  fetchCandidate,
+  fetchTrainees,
   addTrainee,
 };
