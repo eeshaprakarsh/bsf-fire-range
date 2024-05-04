@@ -45,7 +45,7 @@ function ViewEditDetails() {
             data.data[0];
 
           setFormData({
-            dateAdded: new Date(dateAdded),
+            dateAdded,
             traineeID,
             traineeImg: demoImgUrl,
             traineeName,

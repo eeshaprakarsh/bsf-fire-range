@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const traineeSchema = new Schema({
   traineeName: { type: String },
   traineeID: { type: String },
-  dateAdded: { type: Date, default: Date.now },
+  dateAdded: { type: String },
   traineeImg: { type: String },
 });
 

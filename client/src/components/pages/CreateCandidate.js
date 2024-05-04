@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./styles/Pages.css"; // Import your custom CSS file for styling
+import "./styles/Pages.css";
 import NavBar from "../layout/Nav/NavBar";
-// import GeneralForm from "../../forms/GeneralForm/GeneralForm";
 import api from "../../utils/api";
 
 const CreateCandidate = () => {
-  const [formData, setFormData] = useState({
-    traineeName: "",
-    traineeID: "",
-    dateAdded: Date.now(),
-    traineeImg: "",
-  });
+  const [formData, setFormData] = useState({});
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
@@ -20,7 +14,10 @@ const CreateCandidate = () => {
 
   useEffect(() => {}, []);
 
+  // Handle form input field change
   const handleChange = (e) => {
+    e.preventDefault();
+
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -32,16 +29,15 @@ const CreateCandidate = () => {
     }
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Handle form submission
     api.addTrainee(formData).then((res) => {
       if (res.status === 200) {
         // Show success message
         setShowSuccessMessage(true);
 
-        // Set timer to hide the success message after 2 seconds
+        // Set timer to hide the success message after 1 second
         setTimeout(() => {
           setShowSuccessMessage(false);
         }, 1000);
@@ -61,7 +57,6 @@ const CreateCandidate = () => {
                 type="text"
                 id="traineeName"
                 name="traineeName"
-                value={formData.traineeName}
                 onChange={handleChange}
               />
             </div>
@@ -72,7 +67,6 @@ const CreateCandidate = () => {
                 type="text"
                 id="traineeID"
                 name="traineeID"
-                value={formData.traineeID}
                 onChange={handleChange}
               />
             </div>
@@ -83,7 +77,6 @@ const CreateCandidate = () => {
                 type="date"
                 id="dateAdded"
                 name="dateAdded"
-                value={formData.dateAdded}
                 onChange={handleChange}
               />
             </div>
@@ -105,7 +98,6 @@ const CreateCandidate = () => {
                 type="file"
                 id="traineeImg"
                 name="traineeImg"
-                value={formData.traineeImg}
                 onChange={handleChange}
               />
             </div>
