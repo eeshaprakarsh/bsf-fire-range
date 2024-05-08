@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 import "./styles/Pages.css";
 import NavBar from "../layout/Nav/NavBar";
 import api from "../../utils/api";
+import { personalDetails } from "../../schemas/traineeSchema";
 
 const CreateCandidate = () => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(personalDetails);
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
 
   const demoImgUrl =
-    "https://lh3.googleusercontent.com/pw/AP1GczNgJ1QesqXXROo13nRmKQeNDlq8NfTv2dZNSakg4nAjYHwQENsTWgaw24P-XEQa04DadI2388mUfp9-XApCBwOLSsMZ-_F7pMLc1gNddaDX3_KtqV7wPcWfqY6fjpFYzUOlrwu-kE-tuh4nnJDgcRIIiQ=w806-h1430-s-no-gm?authuser=0";
+    "https://im.rediff.com/news/2015/nov/23encounter01-1.JPG?w=670&h=900";
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    // console.log(traineeSchema);
+  }, []);
 
   // Handle form input field change
   const handleChange = (e) => {
@@ -21,9 +24,10 @@ const CreateCandidate = () => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: value.toUpperCase(),
     }));
 
+    // Remove this, once image blob store is added
     if (name === "traineeImg") {
       setImageSrc(demoImgUrl);
     }
@@ -58,6 +62,7 @@ const CreateCandidate = () => {
                 id="traineeName"
                 name="traineeName"
                 onChange={handleChange}
+                required
               />
             </div>
 
@@ -68,6 +73,7 @@ const CreateCandidate = () => {
                 id="traineeID"
                 name="traineeID"
                 onChange={handleChange}
+                required
               />
             </div>
 
@@ -78,6 +84,7 @@ const CreateCandidate = () => {
                 id="dateAdded"
                 name="dateAdded"
                 onChange={handleChange}
+                required
               />
             </div>
 
@@ -99,6 +106,7 @@ const CreateCandidate = () => {
                 id="traineeImg"
                 name="traineeImg"
                 onChange={handleChange}
+                required
               />
             </div>
 

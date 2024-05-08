@@ -36,4 +36,21 @@ router.get("/trainees", async (req, res) => {
   }
 });
 
+// Update route
+router.put("/updateTrainee", async (req, res) => {
+  console.log(req.body);
+  try {
+    const trainees = schemas.trainees;
+
+    const { filter, update } = req.bo;
+
+    // Update document in the collection
+    const result = await trainees.updateMany(filter, { $set: update });
+    res.send(result);
+  } catch (error) {
+    console.error("Error updating document:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
 module.exports = router;

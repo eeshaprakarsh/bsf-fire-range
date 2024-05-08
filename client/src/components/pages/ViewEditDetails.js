@@ -2,28 +2,23 @@ import { useState, useEffect } from "react";
 import "./styles/Pages.css";
 import NavBar from "../layout/Nav/NavBar";
 import api from "../../utils/api";
-
-// import { Input, AutoComplete } from "antd";
-// import "antd/dist/antd.css";
-// const { Option } = AutoComplete;
+import Error from "../layout/Error/Error";
+import { personalDetails } from "../../schemas/traineeSchema";
 
 function ViewEditDetails() {
   const demoImgUrl =
-    "https://lh3.googleusercontent.com/pw/AP1GczNgJ1QesqXXROo13nRmKQeNDlq8NfTv2dZNSakg4nAjYHwQENsTWgaw24P-XEQa04DadI2388mUfp9-XApCBwOLSsMZ-_F7pMLc1gNddaDX3_KtqV7wPcWfqY6fjpFYzUOlrwu-kE-tuh4nnJDgcRIIiQ=w806-h1430-s-no-gm?authuser=0";
+    "https://im.rediff.com/news/2015/nov/23encounter01-1.JPG?w=670&h=900";
 
-  const [formData, setFormData] = useState({
-    traineeName: "",
-    traineeID: "",
-    dateAdded: "",
-  });
+  const resetFormData = {
+    _id: "",
+    ...personalDetails,
+  };
 
-  // const [traineeNameSearch, setTraineeNameSearch] = useState("");
-  // const [traineeIdSearch, setTraineeIdSearch] = useState("");
+  const [formData, setFormData] = useState(resetFormData);
   const [searchTrainee, setSearchTrainee] = useState(true);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [imageSrc, setImageSrc] = useState("");
-  const [options, setOptions] = useState([]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -40,11 +35,11 @@ function ViewEditDetails() {
       api
         .fetchTrainees(value)
         .then((data) => {
-          console.log(data.data[0]);
-          const { dateAdded, traineeID, traineeImg, traineeName } =
+          const { _id, dateAdded, traineeID, traineeImg, traineeName } =
             data.data[0];
 
           setFormData({
+            _id,
             dateAdded,
             traineeID,
             traineeImg: demoImgUrl,
@@ -54,7 +49,16 @@ function ViewEditDetails() {
           setSearchTrainee(false);
           setErrorMessage("");
         })
-        .catch((err) => console.error("Error fetching suggestions:", err));
+        .catch((err) => {
+          console.error("Error fetching suggestions:", err);
+          setFormData({
+            traineeID: "",
+            traineeName: "",
+          });
+          setErrorMessage(
+            "No matching data found! Please type correct name or ID."
+          );
+        });
     }
   };
 
@@ -62,7 +66,7 @@ function ViewEditDetails() {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: value.toUpperCase(),
     }));
   };
 
@@ -71,14 +75,15 @@ function ViewEditDetails() {
 
     // Handle form submission, e.g., send data to server
     console.log(formData);
-
-    // // Show success message
-    // setShowSuccessMessage(true);
-
-    // // Set timer to hide the success message after 2 seconds
-    // setTimeout(() => {
-    //   setShowSuccessMessage(false);
-    // }, 1000);
+    api.updateTrainee(formData._id, formData).then((res) => {
+      console.log(res);
+      // Show success message
+      setShowSuccessMessage(true);
+      // Set timer to hide the success message after 1 second
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 1000);
+    });
   };
 
   return (
@@ -90,17 +95,6 @@ function ViewEditDetails() {
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="traineeName">Trainee Name</label>
-              {/* <AutoComplete
-                style={{ width: 200 }}
-                onSearch={handleSearch}
-                placeholder="Search for names"
-              >
-                {options.map((option) => (
-                  <Option key={option.id} value={option.name}>
-                    {option.name}
-                  </Option>
-                ))}
-              </AutoComplete> */}
               <input
                 type="text"
                 id="traineeName"
@@ -120,7 +114,7 @@ function ViewEditDetails() {
                 onChange={handleChange}
               />
             </div>
-            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+            {errorMessage && <Error errorMessage={errorMessage} />}
             {searchTrainee && (
               <button onClick={(val) => handleSearch(val)}>Search</button>
             )}
@@ -155,10 +149,21 @@ function ViewEditDetails() {
                     name="img"
                     // value={formData.img}
                     // onChange={handleChange}
-                    required
                   />
                 </div>
-                <button type="submit">Submit</button>
+
+                <button className="view-submit-button" type="submit">
+                  Update
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchTrainee(!searchTrainee);
+                    setFormData(resetFormData);
+                  }}
+                >
+                  Search New
+                </button>
               </div>
             )}
           </form>

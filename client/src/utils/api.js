@@ -17,10 +17,6 @@ const queryParams = {
 
 export const fetchTrainees = async (val) => {
   try {
-    // Define your query parameters
-    // const queryParams = {
-    //   param1: val,
-    // };
     let response = await api.get("/trainees", { params: val });
     console.log(response);
     return response;
@@ -28,15 +24,6 @@ export const fetchTrainees = async (val) => {
     console.log(`Error Fetching ${error}`);
     throw error;
   }
-
-  // try {
-  // Fetch from API
-  //   const response = await fetch(`YOUR_API_URL?q=${value}`);
-  //   const data = await response.json();
-  //   setOptions(data);
-  // } catch (error) {
-  //   console.error("Error fetching suggestions:", error);
-  // }
 };
 
 export const addTrainee = async (data) => {
@@ -50,7 +37,22 @@ export const addTrainee = async (data) => {
   }
 };
 
+export const updateTrainee = async (id, update) => {
+  const filter = { _id: id };
+  try {
+    // Make a PUT request to update the document
+    const response = await axios.put("/updateTrainee", {
+      filter,
+      update,
+    });
+    console.log(response.data.message);
+  } catch (error) {
+    console.error("Error updating document:", error);
+  }
+};
+
 export default {
   fetchTrainees,
   addTrainee,
+  updateTrainee,
 };
