@@ -7,20 +7,24 @@ import {
   recordOptions,
 } from "../../schemas/traineeSchema";
 import Error from "../layout/Error/Error";
+import api from "../../utils/api";
+import UPDATE_TYPES from "../../constants/updateTypes";
 
 function RecordReport() {
   const demoImgUrl = "https://m.media-amazon.com/images/I/41lzQNjiebL._AC_.jpg";
-
-  const { position, target, targetSize } = recordOptions;
-  const [formData, setFormData] = useState({
+  const resetFormData = {
     _id: "",
     traineeName: personalDetails.traineeName,
     ...firingDetails,
-  });
+  };
+
+  const { position, target, targetSize } = recordOptions;
+  const [formData, setFormData] = useState(resetFormData);
 
   const [searchTrainee, setSearchTrainee] = useState(true);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [select32, setSelect32] = useState(0);
   const [select48, setSelect48] = useState(0);
@@ -32,8 +36,41 @@ function RecordReport() {
   const handleSearch = (e) => {
     e.preventDefault();
 
-    console.log(e);
-    setSearchTrainee(false);
+    // Check if the name is filled
+    if (!formData.traineeName) {
+      setErrorMessage("Please type Trainee name to search.");
+      return;
+    } else {
+      api
+        .fetchTrainees({ traineeName: formData.traineeName })
+        .then((data) => {
+          if (data && data.data[0]) {
+            const { _id, traineeName } = data.data[0];
+
+            setFormData({
+              ...formData,
+              _id,
+              traineeName,
+            });
+            console.log(formData);
+
+            setSearchTrainee(false);
+            setErrorMessage("");
+          } else {
+            setFormData(resetFormData);
+            setErrorMessage(
+              `No trainee details were found with the name '${formData.traineeName}'. Please navigate to the Home page and create a new Trainee profile.`
+            );
+          }
+        })
+        .catch((err) => {
+          console.error("Error fetching suggestions:", err);
+          setFormData(resetFormData);
+          setErrorMessage(
+            "No matching data found! Please type correct name or ID."
+          );
+        });
+    }
   };
 
   const handleChangeOptions = (e) => {
@@ -68,7 +105,7 @@ function RecordReport() {
     e.preventDefault();
 
     const { name, value } = e.target;
-    console.log(name, value);
+    // console.log(name, value);
     setFormData({ ...formData, [name]: value });
 
     // Remove this, once image blob store is added
@@ -81,15 +118,27 @@ function RecordReport() {
     e.preventDefault();
 
     // Handle form submission, e.g., send data to server
-    console.log(formData);
 
-    // Show success message
-    setShowSuccessMessage(true);
-
-    // Set timer to hide the success message after 2 seconds
-    setTimeout(() => {
-      setShowSuccessMessage(false);
-    }, 1000);
+    const { position, target, targetSize, dateAdded, targetImg } = formData;
+    const dataToPush = {
+      position,
+      target,
+      targetSize,
+      dateAdded,
+      targetImg,
+    };
+    console.log(dataToPush);
+    api
+      .updateTrainee(formData._id, UPDATE_TYPES.PUSH_TO_ARRAY, dataToPush)
+      .then((res) => {
+        console.log(res);
+        // Show success message
+        setShowSuccessMessage(true);
+        // Set timer to hide the success message after 1 second
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 1000);
+      });
   };
 
   return (
@@ -106,9 +155,11 @@ function RecordReport() {
                 id="traineeName"
                 name="traineeName"
                 value={formData.traineeName}
+                // disabled={formData.traineeName ? true : false}
                 onChange={handleChange}
               />
             </div>
+            {errorMessage && <Error errorMessage={errorMessage} />}
             {searchTrainee && (
               <button onClick={(e) => handleSearch(e)}>Search</button>
             )}

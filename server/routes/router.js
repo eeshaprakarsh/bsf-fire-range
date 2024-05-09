@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const UPDATE_TYPES = require("../constants/updateTypes");
 
 const schemas = require("../models/schemas");
 
 router.post("/addTrainee", async (req, res) => {
-  console.log(req.body);
+  console.log(req);
   const { traineeName, traineeID, dateAdded, traineeImg } = req.body;
   const traineeData = {
     traineeName: traineeName,
@@ -24,6 +25,7 @@ router.post("/addTrainee", async (req, res) => {
 });
 
 router.get("/trainees", async (req, res) => {
+  console.log(req);
   try {
     const trainees = schemas.trainees;
     const param = req.query;
@@ -41,11 +43,26 @@ router.put("/updateTrainee", async (req, res) => {
   console.log(req.body);
   try {
     const trainees = schemas.trainees;
+    const { filter, updateType, update } = req.body;
 
-    const { filter, update } = req.bo;
+    let result;
+    switch (updateType) {
+      case UPDATE_TYPES.SET_FIELD:
+        result = await trainees.updateMany(filter, { $set: update });
+        break;
+      case UPDATE_TYPES.PUSH_TO_ARRAY:
+        result = await trainees.updateMany(filter, {
+          $push: { firingReports: update },
+        });
+        break;
+      default:
+        return res.status(400).json({ message: "Invalid update type" });
+    }
 
-    // Update document in the collection
-    const result = await trainees.updateMany(filter, { $set: update });
+    if (!result) {
+      return res.status(404).json({ message: "Trainee not found" });
+    }
+
     res.send(result);
   } catch (error) {
     console.error("Error updating document:", error);

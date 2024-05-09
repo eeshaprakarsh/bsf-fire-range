@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import "./styles/Pages.css";
 import NavBar from "../layout/Nav/NavBar";
 import api from "../../utils/api";
+import UPDATE_TYPES from "../../constants/updateTypes";
 import Error from "../layout/Error/Error";
-import { personalDetails } from "../../schemas/traineeSchema";
+import { personalDetails, firingDetails } from "../../schemas/traineeSchema";
 
 function ViewEditDetails() {
   const demoImgUrl =
@@ -75,15 +76,17 @@ function ViewEditDetails() {
 
     // Handle form submission, e.g., send data to server
     console.log(formData);
-    api.updateTrainee(formData._id, formData).then((res) => {
-      console.log(res);
-      // Show success message
-      setShowSuccessMessage(true);
-      // Set timer to hide the success message after 1 second
-      setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 1000);
-    });
+    api
+      .updateTrainee(formData._id, UPDATE_TYPES.SET_FIELD, formData)
+      .then((res) => {
+        console.log(res);
+        // Show success message
+        setShowSuccessMessage(true);
+        // Set timer to hide the success message after 1 second
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 1000);
+      });
   };
 
   return (
