@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div>
       <div className="cardContainer">
-        <NavLink to="/bsf-fire-range/createCandidate" className="links">
+        <NavLink to="/createCandidate" className="links">
           <div className="card bgBlue">
             <div className="card-body">
               <h6 className="card-title">Add Candidate</h6>
@@ -28,7 +28,7 @@ const Home = () => {
             </div>
           </div>
         </NavLink>
-        <NavLink to="/bsf-fire-range/viewEditDetails" className="links">
+        <NavLink to="/viewEditDetails" className="links">
           <div className="card bgLightBlue">
             <div className="card-body">
               <h6 className="card-title">View/Edit Details</h6>
@@ -39,7 +39,7 @@ const Home = () => {
             </div>
           </div>
         </NavLink>
-        <NavLink to="/bsf-fire-range/recordReport" className="links">
+        <NavLink to="/recordReport" className="links">
           <div className="card bgLightRed">
             <div className="card-body">
               <h6 className="card-title">Record Report</h6>
@@ -48,7 +48,7 @@ const Home = () => {
             </div>
           </div>
         </NavLink>
-        <NavLink to="/bsf-fire-range/viewReport" className="links">
+        <NavLink to="/viewReport" className="links">
           <div className="card bgRed">
             <div className="card-body">
               <h6 className="card-title">View Report</h6>

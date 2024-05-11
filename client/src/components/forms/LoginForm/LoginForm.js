@@ -14,12 +14,12 @@ function LoginForm() {
           <input type="password" className="login-input" required />
           <div className="buttons">
             <button className="login-button">
-              <Link to="/bsf-fire-range/homePage" className="login-links">
+              <Link to="/homePage" className="login-links">
                 Log in
               </Link>
             </button>
             <button className="signup-button">
-              <Link to="/bsf-fire-range/homePage" className="login-links">
+              <Link to="/homePage" className="login-links">
                 Create new account
               </Link>
             </button>

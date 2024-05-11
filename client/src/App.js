@@ -20,18 +20,12 @@ function App() {
         <h2>BSF Firing Assesment</h2>
       </div>
       <Routes>
-        <Route path="/bsf-fire-range" element={<LoginForm />} />
-        <Route path="/bsf-fire-range/homePage" element={<Home />} />
-        <Route
-          path="/bsf-fire-range/createCandidate"
-          element={<CreateCandidate />}
-        />
-        <Route
-          path="/bsf-fire-range/viewEditDetails"
-          element={<ViewEditDetails />}
-        />
-        <Route path="/bsf-fire-range/recordReport" element={<RecordReport />} />
-        <Route path="/bsf-fire-range/viewReport" element={<ViewReport />} />
+        <Route path="/" element={<LoginForm />} />
+        <Route path="/homePage" element={<Home />} />
+        <Route path="/createCandidate" element={<CreateCandidate />} />
+        <Route path="/viewEditDetails" element={<ViewEditDetails />} />
+        <Route path="/recordReport" element={<RecordReport />} />
+        <Route path="/viewReport" element={<ViewReport />} />
       </Routes>
     </div>
   );

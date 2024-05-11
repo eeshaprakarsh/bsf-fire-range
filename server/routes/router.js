@@ -5,7 +5,7 @@ const UPDATE_TYPES = require("../constants/updateTypes");
 const schemas = require("../models/schemas");
 
 router.post("/addTrainee", async (req, res) => {
-  console.log(req);
+  console.log(req.body);
   const { traineeName, traineeID, dateAdded, traineeImg } = req.body;
   const traineeData = {
     traineeName: traineeName,
