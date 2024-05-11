@@ -106,7 +106,7 @@ function RecordReport() {
 
     const { name, value } = e.target;
     // console.log(name, value);
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: value.toUpperCase() });
 
     // Remove this, once image blob store is added
     if (name === "targetPicture") {

@@ -25,8 +25,9 @@ router.post("/addTrainee", async (req, res) => {
 });
 
 router.get("/trainees", async (req, res) => {
-  console.log(req);
   try {
+    console.log(req.query);
+
     const trainees = schemas.trainees;
     const param = req.query;
     const data = await trainees.find(param).exec();
@@ -40,8 +41,9 @@ router.get("/trainees", async (req, res) => {
 
 // Update route
 router.put("/updateTrainee", async (req, res) => {
-  console.log(req.body);
   try {
+    console.log(req.body);
+
     const trainees = schemas.trainees;
     const { filter, updateType, update } = req.body;
 
