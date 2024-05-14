@@ -58,6 +58,7 @@ const Home = () => {
           </div>
         </NavLink>
       </div>
+      <div></div>
 
       <div className="tweet-container">
         {isLoadingTwitter ? (
