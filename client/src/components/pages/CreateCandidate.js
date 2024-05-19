@@ -36,6 +36,7 @@ const CreateCandidate = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
     api.addTrainee(formData).then((res) => {
       if (res.status === 200) {
         // Show success message
@@ -44,6 +45,7 @@ const CreateCandidate = () => {
         // Set timer to hide the success message after 1 second
         setTimeout(() => {
           setShowSuccessMessage(false);
+          setFormData(personalDetails);
         }, 1000);
       }
     });
@@ -61,6 +63,7 @@ const CreateCandidate = () => {
                 type="text"
                 id="traineeName"
                 name="traineeName"
+                value={formData.traineeName}
                 onChange={handleChange}
                 required
               />
@@ -72,6 +75,7 @@ const CreateCandidate = () => {
                 type="text"
                 id="traineeID"
                 name="traineeID"
+                value={formData.traineeID}
                 onChange={handleChange}
                 required
               />
@@ -83,6 +87,7 @@ const CreateCandidate = () => {
                 type="date"
                 id="dateAdded"
                 name="dateAdded"
+                value={formData.dateAdded}
                 onChange={handleChange}
                 required
               />
@@ -114,7 +119,9 @@ const CreateCandidate = () => {
           </form>
           {showSuccessMessage && (
             <div className="overlay">
-              <p className="success-message">Details Updated Successfully!</p>
+              <p className="success-message">
+                New Trainee Profile Created Successfully!
+              </p>
             </div>
           )}
         </div>

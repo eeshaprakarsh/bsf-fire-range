@@ -62,7 +62,7 @@ button:hover {
   flex-grow: 1;
 }
 .target-size-option {
-  margin: 20px 3%;
+  margin: 0 3% 20px;
 }
 
 .overlay {

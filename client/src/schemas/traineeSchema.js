@@ -1,9 +1,10 @@
 // Schema for Trainees details and their firing report
+import helpers from "../utils/helpers";
 
 export const personalDetails = {
   traineeID: "",
   traineeName: "",
-  dateAdded: "",
+  dateAdded: helpers.getTodayDate(),
   traineeImg: "",
 };
 
@@ -15,7 +16,7 @@ export const firingDetails = {
     "48cm": 0,
     else: 0,
   },
-  dateAdded: "",
+  dateAdded: helpers.getTodayDate(),
   targetImg: "",
 };
 

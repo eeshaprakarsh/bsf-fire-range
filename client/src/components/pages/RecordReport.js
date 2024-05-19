@@ -155,17 +155,30 @@ function RecordReport() {
                 id="traineeName"
                 name="traineeName"
                 value={formData.traineeName}
-                // disabled={formData.traineeName ? true : false}
+                disabled={!searchTrainee}
                 onChange={handleChange}
               />
             </div>
             {errorMessage && <Error errorMessage={errorMessage} />}
             {searchTrainee && (
-              <button onClick={(e) => handleSearch(e)}>Search</button>
+              <button onClick={(e) => handleSearch(e)}>
+                Search Trainee to Add
+              </button>
             )}
 
             {!searchTrainee && (
               <div>
+                <div className="form-group">
+                  <label htmlFor="dateAdded">Date</label>
+                  <input
+                    type="date"
+                    id="dateAdded"
+                    name="dateAdded"
+                    value={formData.dateAdded}
+                    onChange={handleChange}
+                    disabled
+                  />
+                </div>
                 <div className="form-group">
                   <label htmlFor="position">Select Position</label>
                   <select
@@ -196,16 +209,6 @@ function RecordReport() {
                   </select>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="dateAdded">Date</label>
-                  <input
-                    type="date"
-                    id="dateAdded"
-                    name="dateAdded"
-                    value={formData.dateAdded}
-                    onChange={handleChange}
-                  />
-                </div>
                 <div className="target-lengths">
                   <div className="form-group target-size-option">
                     <label htmlFor="thirtyTwoCm">32CM</label>
