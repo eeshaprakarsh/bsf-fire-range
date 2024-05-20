@@ -51,7 +51,7 @@ const Home = () => {
         <NavLink to="/viewReport" className="links">
           <div className="card bgRed">
             <div className="card-body">
-              <h6 className="card-title">View Report</h6>
+              <h6 className="card-title">Show Report</h6>
               <p className="card-text">Insights on shooting.</p>
               <FundViewOutlined />
             </div>

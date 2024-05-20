@@ -1,4 +1,4 @@
-// Utility function to format date
+// function to format date
 export const getTodayDate = () => {
   const today = new Date();
   const year = today.getFullYear();
@@ -7,6 +7,18 @@ export const getTodayDate = () => {
   return `${year}-${month}-${day}`;
 };
 
+// function for debouncing
+export const debounce = (func, delay) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+};
+
 export default {
   getTodayDate,
+  debounce,
 };

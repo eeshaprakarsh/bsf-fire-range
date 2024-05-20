@@ -1,5 +1,11 @@
+import "./Error.css";
+
 function Error({ errorMessage }) {
-  return <p style={{ color: "red" }}>{errorMessage}</p>;
+  return (
+    <p className="err-msg" style={{ color: "red" }}>
+      {errorMessage}
+    </p>
+  );
 }
 
 export default Error;

@@ -8,13 +8,16 @@ import {
 } from "../../schemas/traineeSchema";
 import Error from "../layout/Error/Error";
 import api from "../../utils/api";
+import Search from "../common/Search/Search";
 import UPDATE_TYPES from "../../constants/updateTypes";
+import { SEARCH_NAME } from "../../constants";
 
 function RecordReport() {
   const demoImgUrl = "https://m.media-amazon.com/images/I/41lzQNjiebL._AC_.jpg";
   const resetFormData = {
     _id: "",
     traineeName: personalDetails.traineeName,
+    traineeID: personalDetails.traineeID,
     ...firingDetails,
   };
 
@@ -33,43 +36,25 @@ function RecordReport() {
   const selectOption = <option>Select an Option</option>;
   const selectOPtionTargetSize = <option>0</option>;
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    // Check if the name is filled
-    if (!formData.traineeName) {
-      setErrorMessage("Please type Trainee name to search.");
-      return;
+  const handleSearch = (data) => {
+    // Further actions with the selected item
+    console.log("Selected Item:", data);
+    if (data) {
+      const { _id, traineeName, traineeID } = data;
+      console.log(_id, traineeName);
+      setFormData({
+        ...formData,
+        _id,
+        traineeName,
+        traineeID,
+      });
+      setSearchTrainee(false);
+      setErrorMessage("");
     } else {
-      api
-        .fetchTrainees({ traineeName: formData.traineeName })
-        .then((data) => {
-          if (data && data.data[0]) {
-            const { _id, traineeName } = data.data[0];
-
-            setFormData({
-              ...formData,
-              _id,
-              traineeName,
-            });
-            console.log(formData);
-
-            setSearchTrainee(false);
-            setErrorMessage("");
-          } else {
-            setFormData(resetFormData);
-            setErrorMessage(
-              `No trainee details were found with the name '${formData.traineeName}'. Please navigate to the Home page and create a new Trainee profile.`
-            );
-          }
-        })
-        .catch((err) => {
-          console.error("Error fetching suggestions:", err);
-          setFormData(resetFormData);
-          setErrorMessage(
-            "No matching data found! Please type correct name or ID."
-          );
-        });
+      setFormData(resetFormData);
+      setErrorMessage(
+        `No trainee details were found with the name '${formData.traineeName}'. Please navigate to the Home page and create a new Trainee profile.`
+      );
     }
   };
 
@@ -119,26 +104,30 @@ function RecordReport() {
 
     // Handle form submission, e.g., send data to server
 
-    const { position, target, targetSize, dateAdded, targetImg } = formData;
-    const dataToPush = {
-      position,
-      target,
-      targetSize,
-      dateAdded,
-      targetImg,
-    };
-    console.log(dataToPush);
-    api
-      .updateTrainee(formData._id, UPDATE_TYPES.PUSH_TO_ARRAY, dataToPush)
-      .then((res) => {
-        console.log(res);
-        // Show success message
-        setShowSuccessMessage(true);
-        // Set timer to hide the success message after 1 second
-        setTimeout(() => {
-          setShowSuccessMessage(false);
-        }, 1000);
-      });
+    if (formData.traineeName) {
+      const { traineeID, position, target, targetSize, dateAdded, targetImg } =
+        formData;
+      const dataToPush = {
+        traineeID,
+        position,
+        target,
+        targetSize,
+        dateAdded,
+        targetImg,
+      };
+      console.log(dataToPush);
+      api
+        .updateTrainee(formData._id, UPDATE_TYPES.PUSH_TO_ARRAY, dataToPush)
+        .then((res) => {
+          console.log(res);
+          // Show success message
+          setShowSuccessMessage(true);
+          // Set timer to hide the success message after 1 second
+          setTimeout(() => {
+            setShowSuccessMessage(false);
+          }, 1000);
+        });
+    }
   };
 
   return (
@@ -150,24 +139,25 @@ function RecordReport() {
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="traineeName">Trainee Name</label>
-              <input
-                type="text"
-                id="traineeName"
-                name="traineeName"
-                value={formData.traineeName}
-                disabled={!searchTrainee}
-                onChange={handleChange}
+              <Search
+                onSelect={handleSearch}
+                toDisable={!searchTrainee}
+                searchType={SEARCH_NAME}
               />
             </div>
-            {errorMessage && <Error errorMessage={errorMessage} />}
-            {searchTrainee && (
-              <button onClick={(e) => handleSearch(e)}>
-                Search Trainee to Add
-              </button>
-            )}
-
+            <Error errorMessage={errorMessage} />
             {!searchTrainee && (
               <div>
+                <div className="form-group">
+                  <label htmlFor="traineeID">Trainee ID</label>
+                  <input
+                    type="text"
+                    id="traineeID"
+                    name="traineeID"
+                    value={formData.traineeID}
+                    disabled
+                  />
+                </div>
                 <div className="form-group">
                   <label htmlFor="dateAdded">Date</label>
                   <input
@@ -176,7 +166,6 @@ function RecordReport() {
                     name="dateAdded"
                     value={formData.dateAdded}
                     onChange={handleChange}
-                    disabled
                   />
                 </div>
                 <div className="form-group">

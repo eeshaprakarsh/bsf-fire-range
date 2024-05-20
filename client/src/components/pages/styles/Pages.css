@@ -2,7 +2,7 @@
   padding-top: 12%;
   padding-bottom: 17%;
   background-color: antiquewhite;
-  height: 120vh;
+  height: 140vh;
 }
 
 .form-container {
@@ -108,7 +108,7 @@ button:hover {
 @media only screen and (min-width: 768px) {
   .formWrapper {
     padding-top: 7%;
-    height: 140vh;
+    height: 160vh;
   }
 }
 
@@ -116,7 +116,7 @@ button:hover {
 @media only screen and (min-width: 1024px) {
   .formWrapper {
     padding-top: 4%;
-    height: 160vh;
+    height: 180vh;
   }
   .form-container {
     max-width: 480px;

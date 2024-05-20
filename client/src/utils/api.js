@@ -1,6 +1,10 @@
 import axios from "axios";
-import API_ENDPOINTS from "../constants/apiEndpoints";
-import BASE_URL from "../constants/baseUrl";
+import {
+  BASE_URL,
+  FETCH_TRAINEE,
+  ADD_TRAINEE,
+  UPDATE_TRAINEE,
+} from "../constants";
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -12,7 +16,7 @@ const api = axios.create({
 
 export const fetchTrainees = async (val) => {
   try {
-    let response = await api.get(API_ENDPOINTS.FETCH_TRAINEE, {
+    let response = await api.get(FETCH_TRAINEE, {
       params: val,
     });
     console.log(response);
@@ -25,7 +29,7 @@ export const fetchTrainees = async (val) => {
 
 export const addTrainee = async (data) => {
   try {
-    let candidateAdded = await api.post(API_ENDPOINTS.ADD_TRAINEE, data);
+    let candidateAdded = await api.post(ADD_TRAINEE, data);
     console.log(data);
     return candidateAdded;
   } catch (error) {
@@ -39,7 +43,7 @@ export const updateTrainee = async (id, updateType, update) => {
   console.log(updateType);
   try {
     // Make a PUT request to update the document
-    const response = await api.put(API_ENDPOINTS.UPDATE_TRAINEE, {
+    const response = await api.put(UPDATE_TRAINEE, {
       filter,
       updateType,
       update,
