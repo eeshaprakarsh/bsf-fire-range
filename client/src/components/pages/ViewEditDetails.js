@@ -81,7 +81,7 @@ function ViewEditDetails() {
   return (
     <div>
       <NavBar />
-      <div className="formWrapper">
+      <div className="formWrapper viewEditDetails">
         <div className="form-container">
           <h2>View/Edit Details</h2>
           <form onSubmit={handleSubmit}>

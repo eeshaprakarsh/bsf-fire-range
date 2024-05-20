@@ -2,7 +2,15 @@
   padding-top: 12%;
   padding-bottom: 17%;
   background-color: antiquewhite;
+}
+.createCandidate,
+.recordReport,
+.viewEditDetails {
   height: 140vh;
+}
+
+.viewReport {
+  height: 270vh;
 }
 
 .form-container {
@@ -108,7 +116,14 @@ button:hover {
 @media only screen and (min-width: 768px) {
   .formWrapper {
     padding-top: 7%;
+  }
+  .createCandidate,
+  .recordReport,
+  .viewEditDetails {
     height: 160vh;
+  }
+  .viewReport {
+    height: 200vh;
   }
 }
 
@@ -116,8 +131,16 @@ button:hover {
 @media only screen and (min-width: 1024px) {
   .formWrapper {
     padding-top: 4%;
+  }
+  .createCandidate,
+  .recordReport,
+  .viewEditDetails {
     height: 180vh;
   }
+  .viewReport {
+    height: 270vh;
+  }
+
   .form-container {
     max-width: 480px;
   }

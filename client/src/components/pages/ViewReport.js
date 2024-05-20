@@ -17,7 +17,7 @@ function ViewReport() {
     setErrorMessage("");
     // setSearchTrainee(true);
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0 });
     return { _id: "", traineeName: "", traineeID: "", ...firingDetails };
   };
 
@@ -144,7 +144,7 @@ function ViewReport() {
   return (
     <div>
       <NavBar />
-      <div className="formWrapper">
+      <div className="formWrapper viewReport">
         <div className="form-container">
           <h2>Firing Report</h2>
           <form onSubmit={handleSubmit}>

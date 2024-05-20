@@ -53,7 +53,7 @@ const CreateCandidate = () => {
   return (
     <div>
       <NavBar />
-      <div className="formWrapper">
+      <div className="formWrapper createCandidate">
         <div className="form-container">
           <h2>Create New Candidate</h2>
           <form onSubmit={handleSubmit}>

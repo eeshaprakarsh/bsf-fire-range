@@ -133,7 +133,7 @@ function RecordReport() {
   return (
     <div>
       <NavBar />
-      <div className="formWrapper">
+      <div className="formWrapper recordReport">
         <div className="form-container">
           <h2>Record Report</h2>
           <form onSubmit={handleSubmit}>
